@@ -1,0 +1,252 @@
+ 
+ 
+ 
+ html{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+
+/* The sidebar menu */
+
+.sidenav {
+  
+   height: 100%; /* Full-height: remove this if you want "auto" height */
+   width: 200px; /* Set the width of the sidebar */
+   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+   z-index: 10; /* Stay on top */
+   top: 0; /* Stay at the top */
+   left: 0;
+
+   /* by Emilian (like in original Spotify) */
+   background-color: #000000; 
+   overflow-x: hidden; /* Disable horizontal scroll */
+   padding-top: 20px;
+ }
+
+ 
+ 
+ /* The navigation menu links */
+ .sidenav-top  a {
+   padding-left:20px;
+   margin-bottom:15px;
+   text-decoration: none;
+   font-size: 14px;
+   font-weight: 600;
+   color: #76787A;
+   display: block;
+   
+   
+ }
+ 
+ /* When you hover over the navigation links, change their color */
+ .sidenav-top a:hover {
+   color: #f1f1f1;
+  
+   
+ }
+  .logo-nav{
+      width:80%;
+      margin:0 auto;
+  }
+ .logo-nav img{
+     width:80%;
+     max-height: 50px;
+ }
+   /* Pseudo elements for top sidenav links  */
+   .sidenav-top-links a::before{
+       content: "";
+       position: absolute;
+       width:3px;
+       height:25px;
+       background-color: #32AA56;
+       left:0;
+       opacity:0;
+   }
+   .sidenav-top-links a:hover::before{
+       opacity:1;
+   }
+
+   .sidenav-top svg{
+     margin-left:5px;
+   }
+
+
+   /* Sidenav bottom */
+   .sidenav-bottom{
+       position: absolute;
+       bottom:0;
+       left:15%;
+       right:15%;
+       margin-bottom: 80px;
+   }
+
+    /* Custom Buttons */
+
+   .btn-sidenav{
+       display: block;
+       text-transform: uppercase;
+       border-radius: 25px;
+       border:none;
+       width: 100%;
+       margin:0 auto;
+       margin-bottom: 10px;
+       background-color: #fff;
+       font-size: 12px;
+       font-weight: 600;
+       color:#393939;
+       padding: 5px 0;
+       
+   }
+
+   .btn-sidenav-second{
+       display: block;
+       text-transform: uppercase;
+       border-radius: 25px;
+       width: 100%;
+       margin:0 auto;
+       margin-bottom: 10px;
+       border:2px solid #7E7E7D;
+       font-size: 12px;
+       font-weight: 600;
+       color:#B9B9B9;
+       background-color: #161719;
+       padding: 5px 0;
+   }
+   .btn-sidenav:hover{
+       background-color: rgba(255, 255, 255, 0.74);
+       
+   }
+   .btn-sidenav-second:hover{
+       background-color: #7E7E7D;
+   }
+
+   .sidenav-botton-links a{
+       color: #4E4E4E;
+       font-size: 12px;
+
+   }
+   .sidenav-botton-links a:hover{
+       color:#7c7c7c;
+   }
+
+ 
+/* Player Banner */
+ 
+.player-banner{
+    position:fixed;
+    bottom: 0;
+    left:0;
+    margin:0;
+    width: 100%;
+    height:60px;
+    background-color: rgb(24, 24, 24);
+    z-index:11;
+    color:#9CA6B2;
+    /* padding-top: 5px; */
+    /* padding-bottom: 65px; */
+ 
+}
+.player-banner svg:hover{
+       color:white;
+       cursor:pointer;
+}
+.player-banner span{
+    color:#9CA6B2;
+}
+ .player-controls li{
+     list-style: none;
+    padding-left: 10px; 
+     padding-right:10px; 
+   
+}
+ 
+ 
+
+
+ 
+ .duration span{
+     font-size: 10px;
+ }
+
+
+ .volume{
+   -webkit-appearance: none;
+   cursor: pointer;
+   height:3px;
+   width:100px;
+}
+ 
+
+ .range{
+   height: 3px;
+   width:100%;
+   -webkit-appearance: none;
+   cursor: pointer;
+ }
+
+ 
+ input[type="range"] {
+   --range: calc(var(--max) - var(--min));
+   --ratio: calc((var(--value) - var(--min)) / var(--range));
+   --sx: calc(0.5 * 10px + var(--ratio) * (100% - 10px));
+ }
+ 
+ input[type="range"]:focus {
+   outline: none;
+ }
+ 
+ input[type="range"]::-webkit-slider-thumb {
+   width: 10px;
+   height: 10px;
+   border-radius: 1em;
+   background: white;
+   border: none;
+   box-shadow: 0 0 2px black;
+   margin-top: calc(3px * 0.5 - 10px * 0.5);
+   opacity:0;
+   -webkit-appearance: none;
+ }
+ 
+ input[type="range"]::-webkit-slider-runnable-track {
+   height: 3px;
+   border-radius: 0.5em;
+   border: none;
+   box-shadow: none;
+ }
+ 
+ input[type="range"]::-webkit-slider-thumb:hover {
+   background: white;
+ }
+ 
+ input[type="range"]:hover::-webkit-slider-thumb  {
+  opacity:1;
+ }
+ 
+ input[type="range"]::-webkit-slider-thumb:active {
+   background: white;
+ }
+ 
+ input[type="range"]:active::-webkit-slider-runnable-track {
+   background: #32AA56;
+ }
+ 
+ input[type="range"]::-webkit-slider-runnable-track {
+   background: linear-gradient(#fff, #fff) 0 / var(--sx) 100% no-repeat,
+   #535353 ;
+     
+ }
+ 
+ input[type="range"]:hover::-webkit-slider-runnable-track {
+   background: linear-gradient(#32AA56, #32AA56) 0 / var(--sx) 100% no-repeat,
+   #535353;
+     
+ }
+ 
+ input[type="range"]:active::-webkit-slider-runnable-track {
+   background: linear-gradient(#32AA56, #32AA56) 0 / var(--sx) 100% no-repeat,
+   #535353;
+ }
+ input[type="range"]:focus::-webkit-slider-track{
+   background-color: #32AA56;
+ }
