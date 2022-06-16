@@ -30,7 +30,7 @@ const loadArtist = async () => {
             popularAlbums.innerHTML += `<div class="col-3 mb-2 ">
                                             <a href="details.html?albumId=${song.album.id}"> <div class="artist-img d-inline-block"><img class="img-fluid" src="${song.artist.picture_small}" width="100%"></img>
                                             </div>
-                                            <div class="artist-name d-inline-block"><span>${song.artist.name}</span></div></a>
+                                            <div class="artist-name d-inline-block"><span><b>${song.artist.name}</b></span></div></a>
                                         </div>`
 
         })
@@ -67,7 +67,7 @@ const loadAlbums = async (value) => {
         displaySongs.forEach((song) => {
             const popularAlbums = document.getElementById("popularAlbums")
             popularAlbums.innerHTML += `<div class="col-2 mb-2">
-            <a href="details.html?albumId=${song.album.id}"><img class="img-fluid" src="${song.album.cover_small}" width="100%"></img>
+            <a href="details.html?albumId=${song.album.id}"><img class="img-fluid" src="${song.album.cover_medium}" width="100%"></img>
         <span>${song.album.title}</span></a>
     </div>`
 
@@ -103,7 +103,7 @@ const loadQueen = async () => {
         displaySongs.forEach((song) => {
             const popularAlbums = document.getElementById("sectionTwo")
             popularAlbums.innerHTML += `<div class="col-2 mb-2">
-            <a href="details.html?albumId=${song.album.id}"><img class="img-fluid" src="${song.album.cover_small}" width="100%"></img>
+            <a href="details.html?albumId=${song.album.id}"><img class="img-fluid" src="${song.album.cover_medium}" width="100%"></img>
         <span>${song.album.title}</span></a>
     </div>`
 
@@ -128,7 +128,7 @@ const likedSongs = async () => {
         }
 
         const response = await fetch(
-            "https://striveschool-api.herokuapp.com/api/deezer/search?q=all",
+            "https://striveschool-api.herokuapp.com/api/deezer/search?q=folk",
             options
         );
 
@@ -159,3 +159,12 @@ const searchSong = () => {
     }
 
 }
+
+
+
+
+/* popularAlbums.innerHTML += `<div class="col-3 mb-2 ">
+                                            <a href="details.html?albumId=${song.album.id}"> <div class="artist-img d-inline-block"><img class="img-fluid" src="${song.artist.picture_small}" width="100%"></img>
+                                            </div>
+                                            <div class="artist-name d-inline-block"><span><b>${song.artist.name}</b></span></div></a>
+                                        </div>` */
