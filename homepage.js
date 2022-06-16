@@ -27,10 +27,10 @@ const loadArtist = async () => {
         const artists = data.slice(0, 8)
         artists.forEach((song) => {
             const popularAlbums = document.getElementById("sectionOne")
-            popularAlbums.innerHTML += `<div class="col-3 mb-2 d-flex">
-                                            <div class="artist-img"><img class="img-fluid" src="${song.artist.picture_small}" width="100%"></img>
+            popularAlbums.innerHTML += `<div class="col-3 mb-2 ">
+                                            <a href="details.html?albumId=${song.album.id}"> <div class="artist-img d-inline-block"><img class="img-fluid" src="${song.artist.picture_small}" width="100%"></img>
                                             </div>
-                                            <div class="artist-name"><span>${song.artist.name}</span></div>
+                                            <div class="artist-name d-inline-block"><span>${song.artist.name}</span></div></a>
                                         </div>`
 
         })
@@ -67,8 +67,8 @@ const loadAlbums = async (value) => {
         displaySongs.forEach((song) => {
             const popularAlbums = document.getElementById("popularAlbums")
             popularAlbums.innerHTML += `<div class="col-2 mb-2">
-        <img class="img-fluid" src="${song.album.cover_small}" width="100%"></img>
-        <span>${song.album.title}</span>
+            <a href="details.html?albumId=${song.album.id}"><img class="img-fluid" src="${song.album.cover_small}" width="100%"></img>
+        <span>${song.album.title}</span></a>
     </div>`
 
         })
@@ -103,8 +103,8 @@ const loadQueen = async () => {
         displaySongs.forEach((song) => {
             const popularAlbums = document.getElementById("sectionTwo")
             popularAlbums.innerHTML += `<div class="col-2 mb-2">
-        <img class="img-fluid" src="${song.album.cover_small}" width="100%"></img>
-        <span>${song.album.title}</span>
+            <a href="details.html?albumId=${song.album.id}"><img class="img-fluid" src="${song.album.cover_small}" width="100%"></img>
+        <span>${song.album.title}</span></a>
     </div>`
 
         })
@@ -139,7 +139,7 @@ const likedSongs = async () => {
         displaySongs.forEach((song) => {
             const popularAlbums = document.getElementById("likedSongs")
             popularAlbums.innerHTML += `
-            <span><p>${song.title_short}</p></span>`
+            <a href="details.html?albumId=${song.album.id}"><span><p>${song.title_short}</p></span></a>`
 
         })
 
@@ -148,4 +148,14 @@ const likedSongs = async () => {
         console.log(err)
 
     };
+}
+
+const searchSong = () => {
+    const searchInput = document.querySelector("input")
+    if (searchInput.style.display === "none") {
+        searchInput.style.display = "block";
+    } else {
+        searchInput.style.display = "none";
+    }
+
 }

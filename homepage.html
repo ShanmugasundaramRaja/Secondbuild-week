@@ -27,7 +27,9 @@
                     <div class="side-options mx-2"><i class="bi bi-house-door-fill icons"></i><span
                             class="ml-1">Home</span>
                     </div>
-                    <div class="side-options mx-2"><i class="bi bi-search icons"></i><span class="ml-1">Search</span>
+                    <div class="side-options mx-2"><button class="search-btn" onclick="searchSong()" type="submit"><i
+                                class="bi bi-search icons"></i><span class="ml-1">Search</span></button>
+                        <input class="searchbar" type="text" placeholder="search.." name="search">
                     </div>
                     <div class="side-options mx-2"><i class="bi bi-collection-fill icons"></i><span class="ml-1">Your
                             Library</span>
@@ -72,7 +74,7 @@
                         <div class="row" id="sectionOne"></div>
                     </div>
                 </section>
-                <div class="container mt-2">
+                <div class="container mt-2 mb-3">
                     <h2>Recently Viewed</h2>
                     <div class="row" id="popularAlbums">
                     </div>
