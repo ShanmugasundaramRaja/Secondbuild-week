@@ -1,6 +1,6 @@
 
 window.onload = () => {
-    loadAlbums("all")
+    loadAlbums("style")
     loadArtist()
     loadQueen()
     likedSongs()
@@ -17,7 +17,7 @@ const loadArtist = async () => {
         }
 
         const response = await fetch(
-            "https://striveschool-api.herokuapp.com/api/deezer/search?q=all",
+            "https://striveschool-api.herokuapp.com/api/deezer/search?q=beautiful",
             options
         );
 
@@ -92,7 +92,7 @@ const loadQueen = async () => {
         }
 
         const response = await fetch(
-            "https://striveschool-api.herokuapp.com/api/deezer/search?q=queen",
+            "https://striveschool-api.herokuapp.com/api/deezer/search?q=maroon5",
             options
         );
 
