@@ -1,0 +1,142 @@
+body {
+
+    color: azure;
+    background-color: rgb(35, 35, 35);
+}
+
+.container {
+    max-width: 100%;
+}
+
+.top-nav {
+    float: left;
+    width: 80%;
+    position: fixed;
+    display: flex;
+    z-index: 1;
+}
+
+.top-nav-icons {
+    flex-grow: 1;
+}
+
+.icons {
+    font-size: 25px;
+}
+
+.sidebar {
+    background-color: rgb(0, 0, 0);
+}
+
+
+.bi-spotify {
+    font-size: 40px;
+}
+
+.search-btn {
+    color: inherit;
+    background-color: inherit;
+}
+
+.searchbar {
+    display: none;
+
+    border-radius: 20px;
+    padding-left: 10px;
+}
+
+.title {
+    font-size: 25px;
+}
+
+hr {
+    border-top: 1px solid rgb(90, 89, 89)
+}
+
+.linear-gradient {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 0%, rgba(65, 1, 1, 0.9475140397956058) 100%);
+}
+
+.fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.music-player {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: rgb(30, 22, 22);
+    height: 4rem;
+    bottom: 0px;
+    left: 0px;
+}
+
+.song-bar {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.5rem;
+    width: 25%;
+    left: 1rem;
+}
+
+.song-info {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    left: 1rem;
+}
+
+.controls {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em;
+}
+
+.control-buttons {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+}
+
+.other-features {
+    position: absolute;
+    right: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+.artist-img {
+    width: 60px;
+    height: 60px;
+}
+
+.artist-name {
+    text-align: left;
+    padding-left: 5px;
+    align-items: center;
+}
+
+a {
+    color: azure;
+}
+
+a:hover {
+    color: inherit;
+    text-decoration: none;
+}
+
+img:hover {
+    opacity: 0.5;
+}
