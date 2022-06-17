@@ -1,7 +1,7 @@
 
 window.onload = () => {
     loadArtist("rain")
-    loadAlbums("dualipa")
+    loadAlbums("rihanna")
     loadQueen("queen")
     likedSongs("reality")
 }
