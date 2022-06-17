@@ -29,7 +29,8 @@
                     </div>
                     <div class="side-options mx-2"><button class="search-btn" onclick="searchSong()" type="submit"><i
                                 class="bi bi-search icons"></i><span class="ml-1">Search</span></button>
-                        <input class="searchbar" type="text" placeholder="search.." name="search">
+                        <input class="searchbar" onchange="searchAlbum(value)" type="text" placeholder="search.."
+                            name="search">
                     </div>
                     <div class="side-options mx-2"><i class="bi bi-collection-fill icons"></i><span class="ml-1">Your
                             Library</span>
@@ -57,31 +58,33 @@
 
             <div class="col-10 linear-gradient">
 
-                <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
-                            <i class="bi bi-arrow-left-circle mr-2 icons"></i>
-                            <i class="bi bi-arrow-right-circle mr-2 icons"></i>
-                        </ul>
-                        <form class="form-inline my-2 my-lg-0">
-                            <button class="btn btn-outline-success my-2 my-sm-0 mr-2" type="submit">Log In</button>
-                            <button class="btn btn-outline-success my-2 my-sm-0 mr-2" type="submit">Sign Up</button>
-                        </form>
+                <div class="top-nav mt-2 ">
+                    <div class="top-nav-icons">
+                        <i class="bi bi-arrow-left-circle mr-2 icons"></i>
+                        <i class="bi bi-arrow-right-circle mr-2 icons"></i>
                     </div>
-                </nav>
+                    <div class="top-nav-btns">
+                        <button class="btn btn-outline-success my-2 my-sm-0 mr-2" type="submit">Log In</button>
+                        <button class="btn btn-outline-success my-2 my-sm-0 mr-2" type="submit">Sign Up</button>
+                    </div>
+                </div>
 
-                <h1>Good Morning!</h1>
+
                 <section>
                     <div class="container">
+                        <h1 class="mt-5">Good Morning!</h1>
                         <div class="row" id="sectionOne"></div>
                     </div>
                 </section>
-                <div class="container mt-2 mb-3">
-                    <h2>Recently Viewed</h2>
-                    <div class="row" id="popularAlbums">
+
+                <div id="container" class="row">
+                    <div class="container mt-2 mb-3">
+                        <h2>Recently Viewed</h2>
+                        <div class="row" id="recent">
+                        </div>
+                        <h2>Queen Albums</h2>
+                        <div class="row" id="sectionTwo"></div>
                     </div>
-                    <h2>Queen Albums</h2>
-                    <div class="row" id="sectionTwo"></div>
                 </div>
             </div>
         </div>

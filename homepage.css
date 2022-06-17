@@ -8,6 +8,18 @@ body {
     max-width: 100%;
 }
 
+.top-nav {
+    float: left;
+    width: 80%;
+    position: fixed;
+    display: flex;
+    z-index: 1;
+}
+
+.top-nav-icons {
+    flex-grow: 1;
+}
+
 .icons {
     font-size: 25px;
 }
@@ -26,12 +38,11 @@ body {
     background-color: inherit;
 }
 
-.search-btn:focus {}
-
 .searchbar {
     display: none;
+
     border-radius: 20px;
-    transition: all 0.6s ease;
+    padding-left: 10px;
 }
 
 .title {
@@ -60,7 +71,7 @@ hr {
     align-items: center;
     position: relative;
     background-color: rgb(30, 22, 22);
-    height: 5rem;
+    height: 4rem;
     bottom: 0px;
     left: 0px;
 }
