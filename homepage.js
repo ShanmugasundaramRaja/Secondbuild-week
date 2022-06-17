@@ -5,7 +5,13 @@ window.onload = () => {
     loadQueen("queen")
     likedSongs("Hasley")
 }
-
+const options = {
+    method: "GET",
+    headers: {
+        Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmEzNDM5MzdmZmQ0OTAwMTU4YTdhOWMiLCJpYXQiOjE2NTUyMDM2MTMsImV4cCI6MTY1NjQxMzIxM30.ozVgl19lKNBmQ3TeP-LfrHL4ak2PqE9Lj3nhDMHEg0k",
+    },
+}
 const loadArtist = async (query) => {
     try {
         const options = {
@@ -203,6 +209,23 @@ const searchAlbum = async (value) => {
 
     };
 }
+
+const artistList = ()=>{ fetch('https://striveschool-api.herokuapp.com/api/deezer/search?q=rock', options)
+	.then(response => response.json())
+	.then(response => {
+        console.log(response)
+        console.log(response.data[0].artist.name)
+        let parent = document.getElementById("recommend")
+        for (let i=0; i<response.data.length; i++){
+            if (i<15){
+        let kid = document.createElement('div')
+        kid.innerHTML = `<a href="./artist.html?artistId=${response.data[i].artist.id}">${response.data[i].artist.name}<a>`
+        kid.style = "color:#BBBCBE; font-size: 15px"
+        parent.appendChild(kid)}
+    else{break}}
+    })
+	.catch(err => console.error(err));}
+    artistList()
 
 
 //Search Song
