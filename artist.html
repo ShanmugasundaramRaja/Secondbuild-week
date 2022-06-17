@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        const getID = () => {
+            const AlbumId = new URLSearchParams(window.location.search).get("artistId")
+            return AlbumId
+        }
+        const displaySongs = async () => {
+            try {
+                /*const songList= await fetch ('https://deezerdevs-deezer.p.rapidapi.com/search?q=Queen',{*/
+                const trackList = await fetch('https://striveschool-api.herokuapp.com/api/deezer/artist/' + id, {
+                    headers: {
+                        'X-RapidAPI-Key': 'e3da92dd97msh040c0e5bb7a3378p117020jsn2f36ad403841',
+                        'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com'
+                    }
+                })
+                const songs = await trackList.json()
+                console.log(songs)
+
+
+                let list = await tracList(songs)
+                console.log(list)
+                let songList = document.querySelector('.list-group')
+                let cover = document.querySelector("#albumCover")
+                cover.src = "https://e-cdns-images.dzcdn.net/images/cover/fb22a75aa1aafc992230abd0bd79faef/500x500-000000-80-0-0.jpg"
+                let pageTitle = document.querySelector('#albumTitle')
+                let minutes = Math.floor(songs.duration / 60)
+                let seconds = songs.duration % 60
+                if (seconds < 10) {
+                    seconds = "0" + seconds
+                }
+                let duration = minutes + ":" + seconds
+                pageTitle.innerHTML = `
+                        <span>Album</span>
+                        <h3>${songs.title}</h3>
+                            <div>
+                                <img class="queen-img" src="${songs.artist.picture}" alt="">
+                                <a href="./artist.html?artistId=${songs.artist.id}" class="artist-link">${songs.artist.name}.</a>
+                                <span class="span"> ${songs.release_date} duration ${duration}</span>
+
+                            </div>
+                            `
+                for (let i = 0; i < songs.tracks.data.length; i++) {
+                    let minutes = Math.floor(songs.tracks.data[i].duration / 60)
+                    let seconds = songs.tracks.data[i].duration % 60
+                    if (seconds < 10) {
+                        seconds = "0" + seconds
+                    }
+                    let duration = minutes + ":" + seconds
+                    let song = document.createElement('li')
+                    song.className = 'list-group-item d-flex justify-content-between align-items-center'
+                    song.innerHTML = `
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white" class="bi bi-play-fill" viewBox="0 0 16 16">
+          <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z" />
+        </svg>
+        <div >
+          <span class="number mt-3 mr-2 ">${i + 1}</span>
+          <span class="song-title">${songs.tracks.data[i].title}</span> <br>
+            <span class="singer-name">${songs.artist.name}</span>
+        </div>
+        <div class="time">
+            <audio controls>
+                <source src="${songs.tracks.data[i].preview}" type="audio/mpeg">
+                Your browser does not support the audio element.
+                </audio>
+        
+          <svg class="heart" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#BBBCBE" class="bi bi-suit-heart" viewBox="0 0 16 16">
+            <path d="m8 6.236-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z" />
+          </svg>
+          <span class="badge  badge-pill">${duration}</span>
+          <svg class="dots" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#BBBCBE" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+          </svg>
+        </div>
+  `
+                    songList.appendChild(song)
+                    console.log(songs.tracks.data[i].title)
+                    /*music.innerHTML +   = `<div><audio controls>
+                    <source src="${result.tracks.data[i].preview}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio>
+                    </div>`*/
+                }
+            }
+
+            catch (err) {
+                console.log("nope" + err)
+            }
+        }
+        const tracList = async (songs) => {
+            try {
+                const songList = await fetch(songs.tracklist, {
+                    headers: {
+                        'X-RapidAPI-Key': 'e3da92dd97msh040c0e5bb7a3378p117020jsn2f36ad403841',
+                        'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com'
+                    }
+                })
+                const list = await songList.json()
+                return list
+            }
+            catch (error) {
+                console.log(error)
+            }
+        }
+        /*const Albums = async () => {
+            try {
+                const albums = await fetch('https://striveschool-api.herokuapp.com/api/deezer/album/' + list.data[0].album.id, {
+                    headers: {
+                        'X-RapidAPI-Key': 'e3da92dd97msh040c0e5bb7a3378p117020jsn2f36ad403841',
+                        'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com'
+                    }
+                })
+                const AlbumList = await albums.json()
+                console.log(AlbumList)
+            }
+            catch {
+
+            }
+        }*/
+        let id = getID()
+        displaySongs()
+    </script>
+</body>
+
+</html>

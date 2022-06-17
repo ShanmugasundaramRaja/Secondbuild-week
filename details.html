@@ -11,6 +11,7 @@
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="outer.css">
     <link rel="stylesheet" href="album.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         audio::-webkit-media-controls-panel {
   background-color: darkmagenta;
@@ -32,7 +33,7 @@
                     <img class="img-fluid"
                         src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_White.png" alt="">
                 </div>
-                <div class="sidenav-top-links ">
+                <div class="sidenav-top-links border-bottom border-dark mb-3 pb-3">
                     <a href="home.html"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
                             fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
                             <path
@@ -48,18 +49,25 @@
                             <path
                                 d="M0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zM2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3zm2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1z" />
                         </svg> Your Library</a>
+                        <div class="d-flex justify-content-baseline"><i class='fa-solid fa-square-plus ml-4 mr-2' style="font-size: 30px;"></i><span style="color:#BBBCBE; font-size: 15px">create a playlist</span></div>
+                        <div class="d-flex justify-content-baseline mt-3"><img class='ml-4 mr-2' src="https://image.shutterstock.com/z/stock-photo-illustration-of-heart-blue-heart-in-frame-wedding-card-romantic-card-for-valentine-s-day-351904979.jpg" height=30px></img><span style="color:#BBBCBE; font-size: 15px">favorites</span></div>
                 </div>
+                <div id="recommend" class="ml-3">
+                
+            </div>
             </div>
 
         </div>
         <div class="sidenav-bottom ">
             <div>
+                
                 <div>
                     <svg class="ml-1" xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor"
                         class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
                             d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z" />
                     </svg>
+                    <div></div>
                     <a href="#" class="install-link pl-1"> Install App</a>
                 </div>
                 <hr style="background-color:#404040" class="my-1">
@@ -234,6 +242,30 @@
         integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
         crossorigin="anonymous"></script>
     <script>
+       const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'e3da92dd97msh040c0e5bb7a3378p117020jsn2f36ad403841',
+		'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com'
+	}
+};
+
+   const artistList = ()=>{ fetch('https://striveschool-api.herokuapp.com/api/deezer/search?q=rock', options)
+	.then(response => response.json())
+	.then(response => {
+        console.log(response)
+        console.log(response.data[0].artist.name)
+        let parent = document.getElementById("recommend")
+        for (let i=0; i<response.data.length; i++){
+            if (i<15){
+        let kid = document.createElement('div')
+        kid.innerHTML = `<a href="./artist.html?artistId=${response.data[i].artist.id}">${response.data[i].artist.name}<a>`
+        kid.style = "color:#BBBCBE; font-size: 15px"
+        parent.appendChild(kid)}
+    else{break}}
+    })
+	.catch(err => console.error(err));}
+    
         const getID = () => {
             const AlbumId = new URLSearchParams(window.location.search).get("albumId")
             return AlbumId
@@ -264,7 +296,7 @@
                         <h3>${songs.title}</h3>
                             <div>
                                 <img class="queen-img" src="${songs.artist.picture}" alt="">
-                                <a href="#" class="artist-link">${songs.artist.name}.</a>
+                                <a href="./artist.html?artistId=${songs.artist.id}" class="artist-link">${songs.artist.name}.</a>
                                 <span class="span"> ${songs.release_date} duration ${duration}</span>
 
                             </div>
@@ -318,6 +350,7 @@
         }
         let id = 1121401
         displaySongs()
+        artistList()
 
         /*<li class="list-group-item d-flex justify-content-between align-items-center ">
           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white" class="bi bi-play-fill" viewBox="0 0 16 16">
