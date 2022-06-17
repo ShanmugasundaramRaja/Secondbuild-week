@@ -5,11 +5,13 @@ body {
 }
 
 .container {
-    max-width: 200%;
+    max-width: 100%;
+
 }
 
 .top-nav {
     float: left;
+
     width: 100%;
     position: fixed;
     display: flex;
@@ -139,6 +141,7 @@ a:hover {
 
 img:hover {
     opacity: 0.5;
+
 }
 #song-playing {
     justify-content: flex-start;
@@ -166,4 +169,5 @@ img:hover {
     font-size: 20px;
     margin: auto 10px;
     
+
 }
