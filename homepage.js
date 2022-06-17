@@ -188,8 +188,9 @@ const searchAlbum = async (value) => {
         console.log(songs)
         const { data } = songs
         const artists = data.slice(0, 12)
+        const popularAlbums = document.getElementById("container")
+        popularAlbums.innerHTML = `<div class="col-12"><h2>${value} Albums</h2></div>`
         artists.forEach((song) => {
-            const popularAlbums = document.getElementById("container")
             popularAlbums.innerHTML += `
             <div class="col-2 mb-2">
             <a href="details.html?albumId=${song.album.id}"><img class="img-fluid" src="${song.album.cover_medium}" width="100%"></img>
@@ -212,8 +213,6 @@ const searchAlbum = async (value) => {
     }
 }
 searchbutton.addEventListener("click", searchSong) */
-
-
 
 //
 
