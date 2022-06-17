@@ -1,9 +1,9 @@
 
 window.onload = () => {
     loadArtist("rain")
-    loadAlbums("rihanna")
+    loadAlbums("Madonna")
     loadQueen("queen")
-    likedSongs("reality")
+    likedSongs("Hasley")
 }
 
 const loadArtist = async (query) => {
@@ -27,7 +27,7 @@ const loadArtist = async (query) => {
         const artists = data.slice(0, 8)
         artists.forEach((song) => {
             const popularAlbums = document.getElementById("sectionOne")
-            popularAlbums.innerHTML += `<div class="col-3 mb-2 ">
+            popularAlbums.innerHTML += `<div class="col-sm-6 col-md-4 col-lg-3 mb-2 ">
                                             <a href="details.html?albumId=${song.album.id}"> <div class="artist-img d-inline-block"><img class="img-fluid" src="${song.artist.picture_medium}" width="100%"></img>
                                             </div>
                                             <div class="artist-name d-inline-block"><span><b>${song.artist.name}</b></span></div></a>
@@ -66,7 +66,7 @@ const loadAlbums = async (value) => {
         const displaySongs = data.slice(0, 6)
         displaySongs.forEach((song) => {
             const popularAlbums = document.getElementById("recent")
-            popularAlbums.innerHTML += `<div class="col-2 mb-2">
+            popularAlbums.innerHTML += `<div class="col-sm-6 col-md-4 col-lg-2 mb-2">
             <a href="details.html?albumId=${song.album.id}"><img class="img-fluid" src="${song.album.cover_medium}" width="100%"></img>
         <span>${song.album.title}</span></a>
     </div>`
@@ -102,7 +102,7 @@ const loadQueen = async (value) => {
         const displaySongs = data.slice(0, 6)
         displaySongs.forEach((song) => {
             const popularAlbums = document.getElementById("sectionTwo")
-            popularAlbums.innerHTML += `<div class="col-2 mb-2">
+            popularAlbums.innerHTML += `<div class="col-sm-6 col-md-4 col-lg-2 mb-2">
             <a href="details.html?albumId=${song.album.id}"><img class="img-fluid" src="${song.album.cover_medium}" width="100%"></img>
         <span>${song.album.title}</span></a>
     </div>`
@@ -192,7 +192,7 @@ const searchAlbum = async (value) => {
         popularAlbums.innerHTML = `<div class="col-12"><h2>${value} Albums</h2></div>`
         artists.forEach((song) => {
             popularAlbums.innerHTML += `
-            <div class="col-2 mb-2">
+            <div class="col-sm-6 col-md-4 col-lg-2 mb-2">
             <a href="details.html?albumId=${song.album.id}"><img class="img-fluid" src="${song.album.cover_medium}" width="100%"></img>
         <span>${song.album.title}</span></a>
     </div>`
