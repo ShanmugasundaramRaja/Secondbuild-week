@@ -140,6 +140,7 @@ a:hover {
 img:hover {
     opacity: 0.5;
 }
+
 #song-playing {
     justify-content: flex-start;
     display: flex;
@@ -148,7 +149,7 @@ img:hover {
     margin-bottom: 5px;
     padding-left: 10px;
     color: white;
-    
+
 }
 
 #song {
@@ -165,5 +166,5 @@ img:hover {
 #song-playing svg {
     font-size: 20px;
     margin: auto 10px;
-    
+
 }

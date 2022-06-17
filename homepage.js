@@ -210,22 +210,27 @@ const searchAlbum = async (value) => {
     };
 }
 
-const artistList = ()=>{ fetch('https://striveschool-api.herokuapp.com/api/deezer/search?q=rock', options)
-	.then(response => response.json())
-	.then(response => {
+const artistList = () => {
+    fetch('https://striveschool-api.herokuapp.com/api/deezer/search?q=rock', options)
+    .then(response => response.json())
+    .then(response => {
         console.log(response)
         console.log(response.data[0].artist.name)
         let parent = document.getElementById("recommend")
-        for (let i=0; i<response.data.length; i++){
-            if (i<15){
-        let kid = document.createElement('div')
-        kid.innerHTML = `<a href="./artist.html?artistId=${response.data[i].artist.id}">${response.data[i].artist.name}<a>`
-        kid.style = "color:#BBBCBE; font-size: 15px"
-        parent.appendChild(kid)}
-    else{break}}
+        for (let i = 0; i < response.data.length; i++) {
+            if (i < 15) {
+                let kid = document.createElement('div')
+                kid.innerHTML = `<a href="./artist.html?artistId=${response.data[i].artist.id}">${response.data[i].artist.name}<a>`
+                kid.style = "color:#BBBCBE; font-size: 15px"
+                parent.appendChild(kid)
+            }
+            else { break }
+        }
     })
-	.catch(err => console.error(err));}
-    artistList()
+    .catch(err => console.error(err));
+}
+artistList()
+
 
 
 //Search Song
